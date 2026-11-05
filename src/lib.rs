@@ -7,14 +7,14 @@ use std::fmt;
 
 /// Errors produced by this component. Fail-fast: errors are returned, not panicked.
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub enum Sigmaos_arch_boxesError {
+pub enum ArchBoxesError {
     /// The requested operation is not valid in the current state.
     InvalidState,
     /// Input failed validation.
     InvalidInput(String),
 }
 
-impl fmt::Display for Sigmaos_arch_boxesError {
+impl fmt::Display for ArchBoxesError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             Self::InvalidState => write!(f, "invalid state"),
@@ -23,20 +23,20 @@ impl fmt::Display for Sigmaos_arch_boxesError {
     }
 }
 
-impl std::error::Error for Sigmaos_arch_boxesError {}
+impl std::error::Error for ArchBoxesError {}
 
 /// Core component type. Holds configuration; performs no I/O by default.
 #[derive(Debug, Clone, Default)]
-pub struct Sigmaos_arch_boxes {
+pub struct ArchBoxes {
     name: String,
 }
 
-impl Sigmaos_arch_boxes {
+impl ArchBoxes {
     /// Create a new component instance. Fails fast on empty names.
-    pub fn new(name: impl Into<String>) -> Result<Self, Sigmaos_arch_boxesError> {
+    pub fn new(name: impl Into<String>) -> Result<Self, ArchBoxesError> {
         let name = name.into();
         if name.trim().is_empty() {
-            return Err(Sigmaos_arch_boxesError::InvalidInput("name must not be empty".into()));
+            return Err(ArchBoxesError::InvalidInput("name must not be empty".into()));
         }
         Ok(Self { name })
     }
@@ -47,9 +47,9 @@ impl Sigmaos_arch_boxes {
     }
 
     /// Perform the component's primary action. Returns a deterministic result.
-    pub fn run(&self) -> Result<String, Sigmaos_arch_boxesError> {
+    pub fn run(&self) -> Result<String, ArchBoxesError> {
         if self.name.is_empty() {
-            return Err(Sigmaos_arch_boxesError::InvalidState);
+            return Err(ArchBoxesError::InvalidState);
         }
         Ok(format!("{}: ok", self.name))
     }
@@ -62,18 +62,18 @@ mod tests {
     #[test]
     fn new_rejects_empty_name() {
         // Arrange / Act / Assert
-        assert!(matches!(Sigmaos_arch_boxes::new("  "), Err(Sigmaos_arch_boxesError::InvalidInput(_))));
+        assert!(matches!(ArchBoxes::new("  "), Err(ArchBoxesError::InvalidInput(_))));
     }
 
     #[test]
     fn run_returns_deterministic_result() {
-        let c = Sigmaos_arch_boxes::new("test").unwrap();
+        let c = ArchBoxes::new("test").unwrap();
         assert_eq!(c.run().unwrap(), "test: ok");
     }
 
     #[test]
     fn name_is_accessible() {
-        let c = Sigmaos_arch_boxes::new("abc").unwrap();
+        let c = ArchBoxes::new("abc").unwrap();
         assert_eq!(c.name(), "abc");
     }
 }
