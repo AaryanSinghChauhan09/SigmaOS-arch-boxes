@@ -3,7 +3,7 @@ name = "SigmaOS-arch-boxes"
 tier = 2
 stability = "scaffold"
 language = "rust"
-description = "arch-boxes component"
+description = "SigmaOS arch-boxes component (Arch Linux inspired)"
 upstream = []
 
 [contract]
