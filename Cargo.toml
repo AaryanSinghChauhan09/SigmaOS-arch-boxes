@@ -1,8 +1,15 @@
 [package]
-name = "sigmaos-arch-boxes"
+name = "SigmaOS-arch-boxes"
 version = "0.1.0"
 edition = "2021"
-license = "MIT"
-description = "Development VM/box image generator — SigmaOS component inspired by Arch Linux infrastructure."
+license = "Apache-2.0"
+description = "SigmaOS arch_boxes component"
+
+[lib]
+name = "arch_boxes"
+path = "src/lib.rs"
 
 [dependencies]
+thiserror = "1"
+
+[dev-dependencies]
