@@ -1,6 +1,6 @@
-# SigmaOS-arch-boxes
+# SigmaOS-boxes
 
-SigmaOS arch-boxes component (Arch Linux inspired)
+SigmaOS boxes component (Arch Linux inspired)
 
 - **Category:** Messaging
 - **Engine:** messaging

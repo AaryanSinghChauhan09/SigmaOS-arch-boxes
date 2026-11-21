@@ -1,12 +1,12 @@
 [package]
-name = "SigmaOS-arch-boxes"
+name = "sigmaos-boxes"
 version = "0.1.0"
 edition = "2021"
 license = "Apache-2.0"
-description = "SigmaOS arch_boxes component"
+description = "SigmaOS sigmaos_boxes component"
 
 [lib]
-name = "arch_boxes"
+name = "sigmaos_boxes"
 path = "src/lib.rs"
 
 [dependencies]

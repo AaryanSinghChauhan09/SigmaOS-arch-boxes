@@ -1,4 +1,4 @@
-use arch_boxes::Component;
+use sigmaos_boxes::Component;
 
 #[test]
 fn test_component_lifecycle_aaa() {

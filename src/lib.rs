@@ -1,4 +1,4 @@
-//! SigmaOS arch_boxes component
+//! SigmaOS boxes component
 #![forbid(unsafe_code)]
 #![warn(missing_docs)]
 
